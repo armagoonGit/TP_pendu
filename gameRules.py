@@ -5,11 +5,12 @@
 que fait : fichier qui gere les mechaniques du projet pendu sans interface
 qui : FOËX Vick 
 quand : 3/12/2020
-que reste a faire : si la lettre n'est pas bon chance sur 8
+que reste a faire : 
     
 """
 
 from module import addLettre, printGuesWord
+from score import addScore
 
 def valideLettre(lettre):
     """
@@ -28,7 +29,7 @@ def valideLettre(lettre):
         return( False )
     return(lettre)
 
-def askLettre():
+def askLettre(lettreList):
     """
     Demande a l'utilisateur une lettre jusuqu'a se qu'elle soit valide
     return : la lettre valide en majuscule
@@ -36,11 +37,18 @@ def askLettre():
     
     lettre = input("Veuiller choisir une lettre : ")
     
-    while valideLettre(lettre) == False:
+    while valideLettre(lettre) == False or usedLettre(lettre, lettreList) == True:
         lettre = input("Veuiller choisir une lettre valide : ")
-    
+        
+    lettreList.append(lettre)
     return( lettre )   
 
+def  usedLettre(lettre, lettreList):
+    if lettre in lettreList :
+        print("cette lettre a deja ete choisie")
+        return(True)
+    return(False)
+    
 def checkPresence(guesWord = "A____", word = "ARBRE",lettre = 'B') :
     """
     Verifie que la lettre est presente' dans le mot, la remplace si oui
@@ -48,15 +56,17 @@ def checkPresence(guesWord = "A____", word = "ARBRE",lettre = 'B') :
     Return : le mot a deviner avec ses nouvelle lettre si besoin
     """
     
+    error = 0
     if lettre in word :
         for i in range( len( word ) ):
             if word[i] == lettre:
                 guesWord = addLettre(guesWord, lettre, i)
     else:
         print("la lettre n'est pas dans le mot")
+        error = 1
         
     printGuesWord(guesWord)
-    return(guesWord)
+    return(guesWord, error)
     
 def genWordUnder(word):
     """
@@ -78,13 +88,16 @@ def stopGame(guesWord):
         return(False)
     return(True)
 
-def endGame(guesWord):
+def endGame(guesWord, nbTurn, word):
     """
     Verifie en fin de partie si le joueur a trouve le mot ou non
     """
     if stopGame(guesWord) == True :
         print("youplaOup bravo c'est gagner")
+        addScore(word, nbTurn)
     else :
         print("desoler mais c'est perdu")
+        
+    
                 
 

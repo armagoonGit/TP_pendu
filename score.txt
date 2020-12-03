@@ -1,0 +1,4 @@
+oui:12
+teze:12
+motif:7
+jadis:10
