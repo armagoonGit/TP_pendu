@@ -39,16 +39,20 @@ def sortList(wordList):
     for k in key:
         wordList += sieze[k]
     
-    print(wordList)
-
-
-    
-
+    return(wordList)
 
 def pickWord(wordList):
-    rand = randint(0, len(wordList) - 1 )
-    print (rand, wordList[rand])
+    rand = randint(0, len( wordList ) - 1 )
+    return( wordList[ rand ] )
     
 
-sortList(readWord())
+def getWord():
+    wordList = readWord()
+    wordList = sortList(wordList)
+    word = pickWord(wordList)
+    return( word )
+    
+
+
+
     

@@ -8,5 +8,9 @@ que reste a faire :
 
 """
 
+from module import getWord
 
+def main():
+    print(getWord())
 
+main()
