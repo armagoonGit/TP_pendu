@@ -11,6 +11,10 @@ que reste a faire :
 from module import getWord
 
 def main():
-    print(getWord())
+    word = getWord()
+    lettre = input("entrer une lettre")
+    #verif que c un lettre
+    #fct("A____","arbre",lettre)
+    
 
 main()
