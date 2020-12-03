@@ -5,7 +5,7 @@
 que fait : fichier module du projet pendu sans interface
 qui : FOËX Vick 
 quand : 3/12/2020
-que reste a faire :
+que reste a faire : capitalize le mot return 
     
 """
 
@@ -52,6 +52,17 @@ def getWord():
     word = pickWord(wordList)
     return( word )
     
+def addLettre(guesWord, lettre, index):
+    guesWord = guesWord[:index] + lettre + guesWord[index + 1:]
+    return(guesWord)
+    
+def printGuesWord(guesWord):
+    print("avancer des travaux: ")
+    for char in guesWord :
+        print( char , end = ' ')
+    print('\n')
+
+
     
 
 
