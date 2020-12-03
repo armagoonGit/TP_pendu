@@ -23,11 +23,32 @@ def readWord():
     
     return(wordList)
 
+def sortList(wordList):
+    sieze = {}
+
+    for el in wordList :
+        lenEl = str( len( el ) )
+        
+        if lenEl in sieze: 
+            sieze[ lenEl ].append( el )
+        else:
+            sieze[ lenEl ] = [el]
+            
+    key =sorted( list( sieze.keys() ) )
+    wordList = []
+    for k in key:
+        wordList += sieze[k]
+    
+    print(wordList)
+
+
+    
+
 
 def pickWord(wordList):
     rand = randint(0, len(wordList) - 1 )
     print (rand, wordList[rand])
     
 
-pickWord(readWord())
+sortList(readWord())
     
