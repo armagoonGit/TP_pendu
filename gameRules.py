@@ -51,5 +51,10 @@ def stopGame(guesWord):
         return(False)
     return(True)
 
+def endGame(guesWord):
+    if stopGame(guesWord) == True :
+        print("youplaOup bravo c'est gagner")
+    else :
+        print("desoler mais c'est perdu")
                 
 
