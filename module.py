@@ -9,6 +9,7 @@ que reste a faire :
     
 """
 
+from random import randint
 
 def readWord():
     wordDoc = open('liste_mot.txt')
@@ -22,4 +23,11 @@ def readWord():
     
     return(wordList)
 
-print(readWord())
+
+def pickWord(wordList):
+    rand = randint(0, len(wordList) - 1 )
+    print (rand, wordList[rand])
+    
+
+pickWord(readWord())
+    
